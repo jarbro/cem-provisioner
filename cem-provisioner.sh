@@ -10,9 +10,12 @@ PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 #
-# This will be updated to a more secure manner in the next release
-export AWS_SECRET_ACCESS_KEY=<Your Secret Access Key>
-export AWS_ACCESS_KEY_ID=<Your AWS Access Key>
+# Grab keys from CyberArk Vault
+aws_keys=( $(./clipasswordsdk getpassword -p AppDescs.AppID=<Your App ID> -p Query="<Enter Your Safe Query String>" -p RequiredProps=* -o Password,PassProps.AWSAccessKeyID | tr ',' '\n'))
+#
+export AWS_SECRET_ACCESS_KEY= echo ${aws_keys[0]}
+export AWS_ACCESS_KEY_ID= echo ${aws_keys[1]}
+# ----------------------------------
 # ----------------------------------
 # Step #2: User defined function
 # ----------------------------------
