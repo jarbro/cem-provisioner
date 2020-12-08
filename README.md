@@ -3,7 +3,7 @@
 Quick tool to make it easier to provision/deprovision the Ansible playbooks from [@QuincyCheng](https://github.com/quincycheng/cem-demo-ansible).  Keys are pulled from the CyberArk Vault using CP
 
 **TO-DO's**
-1. Unset export Variables playbook is complete.
+1. Unset export Variables when playbook is complete.
 2. Look into passing the aws keys via the option extra_vars=
 3. Ditch the bash script and pull the keys directly into the playbook.
 
