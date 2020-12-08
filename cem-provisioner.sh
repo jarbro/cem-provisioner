@@ -9,6 +9,7 @@ EDITOR=vim
 PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
+ANSIBLEPATH=<PATH TO QUICNYS ANSIBLE SCRIPTS>
 #
 # Grab keys from CyberArk Vault
 aws_keys=( $(./clipasswordsdk getpassword -p AppDescs.AppID=<Your App ID> -p Query="<Enter Your Safe Query String>" -p RequiredProps=* -o Password,PassProps.AWSAccessKeyID | tr ',' '\n'))
@@ -24,13 +25,13 @@ pause(){
 }
 
 Provision(){
-	ansible-playbook <Path to Ansible playbooks>/aws/aws-setup.yml
+	ansible-playbook $ANSIBLEPATH/aws/aws-setup.yml
         pause
 }
  
 # do something in two()
 Deprovision(){
-	ansible-playbook <Path to Ansible playbooks>/aws/aws-cleanup.yml
+	ansible-playbook $ANSIBLEPATH/aws/aws-cleanup.yml
         pause
 }
  
